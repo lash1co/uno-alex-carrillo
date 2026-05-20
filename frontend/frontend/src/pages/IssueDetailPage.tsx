@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import { useParams } from "react-router-dom";
+import { Link, useParams } from "react-router-dom";
 import type { Issue } from "../types/issue";
 import { issueService } from "../services/issueService";
 import { attachmentService } from "../services/attachmentService";
@@ -96,6 +96,13 @@ export const IssueDetailPage = () => {
               Update the issue and manage its attachments.
             </p>
           </div>
+
+          <Link
+            className="button button--secondary"
+            to="/issues"
+          >
+            Back to issues
+          </Link>
         </div>
 
         <IssueForm
@@ -105,11 +112,24 @@ export const IssueDetailPage = () => {
 
         <hr className="divider" />
 
-        <h2>Attachments</h2>
+        <div className="section-header">
+          <div>
+            <h2>Attachments</h2>
+            <p>
+              Upload images related to this issue.
+            </p>
+          </div>
+        </div>
 
         <FileUpload
           onUpload={handleUpload}
         />
+
+        {issue.attachments.length === 0 && (
+          <p className="empty-state">
+            No attachments yet.
+          </p>
+        )}
 
         <div className="attachment-grid">
           {issue.attachments.map(

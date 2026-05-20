@@ -1,14 +1,18 @@
 :root {
-  --bg: #f5f7fb;
+  --bg: #f4f6f8;
   --surface: #ffffff;
-  --surface-muted: #f8fafc;
-  --text: #172033;
-  --text-muted: #667085;
-  --border: #d9e2ef;
-  --primary: #2563eb;
-  --primary-strong: #1d4ed8;
-  --danger: #dc2626;
-  --shadow: 0 16px 40px rgba(15, 23, 42, 0.08);
+  --surface-muted: #f9fafb;
+  --text: #1f2933;
+  --text-muted: #697586;
+  --border: #d7dde5;
+  --primary: #0f766e;
+  --primary-strong: #115e59;
+  --primary-soft: #e6f4f1;
+  --danger: #b42318;
+  --warning: #b54708;
+  --success: #067647;
+  --info: #175cd3;
+  --shadow: 0 12px 30px rgba(31, 41, 51, 0.08);
   --radius: 8px;
   --content-width: 1120px;
 
@@ -31,6 +35,10 @@ body {
   min-width: 320px;
   min-height: 100vh;
   margin: 0;
+  color: var(--text);
+  background:
+    radial-gradient(circle at top left, rgba(15, 118, 110, 0.08), transparent 28rem),
+    var(--bg);
 }
 
 button,
@@ -41,9 +49,10 @@ input {
 button {
   border: 0;
   border-radius: 6px;
-  padding: 10px 16px;
+  padding: 9px 14px;
   color: #ffffff;
   background: var(--primary);
+  font-weight: 700;
   cursor: pointer;
   transition:
     background-color 160ms ease,
@@ -53,7 +62,7 @@ button {
 
 button:hover:not(:disabled) {
   background: var(--primary-strong);
-  box-shadow: 0 10px 24px rgba(37, 99, 235, 0.2);
+  box-shadow: 0 10px 24px rgba(15, 118, 110, 0.18);
   transform: translateY(-1px);
 }
 
@@ -72,6 +81,32 @@ a:hover {
   text-decoration: underline;
 }
 
+.button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 42px;
+  border-radius: 6px;
+  padding: 10px 16px;
+  font-weight: 700;
+  text-decoration: none;
+}
+
+.button:hover {
+  text-decoration: none;
+}
+
+.button--secondary {
+  color: var(--text);
+  border: 1px solid var(--border);
+  background: var(--surface);
+}
+
+.button--secondary:hover {
+  border-color: var(--primary);
+  color: var(--primary);
+}
+
 h1,
 h2,
 p {
@@ -79,15 +114,17 @@ p {
 }
 
 h1 {
-  margin-bottom: 24px;
-  font-size: clamp(2rem, 5vw, 3rem);
-  line-height: 1.05;
+  margin-bottom: 6px;
+  font-size: clamp(1.75rem, 3vw, 2.25rem);
+  line-height: 1.12;
+  letter-spacing: -0.02em;
 }
 
 h2 {
-  margin-bottom: 16px;
-  font-size: clamp(1.25rem, 3vw, 1.75rem);
-  line-height: 1.2;
+  margin-bottom: 6px;
+  font-size: clamp(1.05rem, 2vw, 1.25rem);
+  line-height: 1.25;
+  letter-spacing: -0.01em;
 }
 
 #root {
@@ -97,11 +134,11 @@ h2 {
 .container {
   width: min(100% - 32px, var(--content-width));
   margin: 0 auto;
-  padding: 32px 0 48px;
+  padding: 28px 0 48px;
 }
 
 .page-card {
-  padding: clamp(20px, 4vw, 32px);
+  padding: clamp(18px, 3vw, 28px);
   border: 1px solid var(--border);
   border-radius: var(--radius);
   background: var(--surface);
@@ -113,7 +150,7 @@ h2 {
   align-items: flex-start;
   justify-content: space-between;
   gap: 16px;
-  margin-bottom: 24px;
+  margin-bottom: 22px;
 }
 
 .page-header h1 {
@@ -121,7 +158,9 @@ h2 {
 }
 
 .page-subtitle {
+  margin-bottom: 0;
   color: var(--text-muted);
+  font-size: 0.95rem;
 }
 
 .app-nav {
@@ -132,7 +171,7 @@ h2 {
   align-items: center;
   justify-content: space-between;
   gap: 24px;
-  padding: 16px max(16px, calc((100vw - var(--content-width)) / 2));
+  padding: 14px max(16px, calc((100vw - var(--content-width)) / 2));
   border-bottom: 1px solid var(--border);
   background: rgba(255, 255, 255, 0.92);
   backdrop-filter: blur(12px);
@@ -140,8 +179,9 @@ h2 {
 
 .app-nav__brand {
   margin: 0;
-  font-size: 1.25rem;
+  font-size: 1.05rem;
   line-height: 1.2;
+  font-weight: 800;
 }
 
 .app-nav__actions {
@@ -157,7 +197,7 @@ h2 {
 
 .form {
   display: grid;
-  gap: 18px;
+  gap: 16px;
 }
 
 .form--narrow {
@@ -170,6 +210,8 @@ h2 {
 }
 
 .form-field label {
+  color: #364152;
+  font-size: 0.92rem;
   font-weight: 700;
 }
 
@@ -185,7 +227,7 @@ h2 {
 
 .form-field input:focus {
   border-color: var(--primary);
-  outline: 3px solid rgba(37, 99, 235, 0.16);
+  outline: 3px solid rgba(15, 118, 110, 0.14);
 }
 
 .form-error {
@@ -208,14 +250,14 @@ h2 {
 
 .issue-table th,
 .issue-table td {
-  padding: 14px 16px;
+  padding: 13px 16px;
   border-bottom: 1px solid var(--border);
-  vertical-align: top;
+  vertical-align: middle;
 }
 
 .issue-table th {
   color: var(--text-muted);
-  font-size: 0.8rem;
+  font-size: 0.75rem;
   letter-spacing: 0.04em;
   text-transform: uppercase;
   background: var(--surface-muted);
@@ -229,6 +271,10 @@ h2 {
   min-width: 220px;
 }
 
+.issue-table__title a {
+  color: var(--text);
+}
+
 .issue-table__empty {
   color: var(--text-muted);
   text-align: center;
@@ -237,27 +283,77 @@ h2 {
 .pagination {
   display: flex;
   align-items: center;
-  justify-content: flex-end;
-  gap: 14px;
+  justify-content: space-between;
+  gap: 12px;
   margin-top: 20px;
 }
 
 .pagination span {
   color: var(--text-muted);
+  font-size: 0.92rem;
   font-weight: 600;
 }
 
 .divider {
-  margin: 28px 0;
+  margin: 24px 0;
   border: 0;
   border-top: 1px solid var(--border);
 }
 
+.section-header {
+  display: flex;
+  align-items: flex-end;
+  justify-content: space-between;
+  gap: 16px;
+  margin-bottom: 14px;
+}
+
+.section-header p {
+  margin-bottom: 0;
+  color: var(--text-muted);
+  font-size: 0.92rem;
+}
+
+.badge {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: fit-content;
+  min-height: 26px;
+  border-radius: 999px;
+  padding: 4px 10px;
+  font-size: 0.78rem;
+  font-weight: 800;
+  line-height: 1;
+}
+
+.badge--low,
+.badge--closed {
+  color: var(--success);
+  background: #ecfdf3;
+}
+
+.badge--medium,
+.badge--in-progress {
+  color: var(--warning);
+  background: #fff4e5;
+}
+
+.badge--high {
+  color: var(--danger);
+  background: #fef3f2;
+}
+
+.badge--open {
+  color: var(--info);
+  background: #eff4ff;
+}
+
 .attachment-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
   gap: 16px;
-  margin-top: 16px;
+  margin-top: 18px;
 }
 
 .attachment-card {
@@ -284,7 +380,7 @@ h2 {
 
 .file-upload {
   display: grid;
-  gap: 10px;
+  gap: 8px;
 }
 
 .file-upload input {
@@ -296,6 +392,16 @@ h2 {
   color: var(--text-muted);
 }
 
+.empty-state {
+  margin-top: 16px;
+  padding: 18px;
+  border: 1px dashed var(--border);
+  border-radius: var(--radius);
+  color: var(--text-muted);
+  background: var(--surface-muted);
+  text-align: left;
+}
+
 @media (max-width: 720px) {
   .container {
     width: min(100% - 24px, var(--content-width));
@@ -305,7 +411,8 @@ h2 {
   .page-header,
   .app-nav,
   .app-nav__actions,
-  .pagination {
+  .pagination,
+  .section-header {
     align-items: stretch;
     flex-direction: column;
   }
@@ -324,7 +431,8 @@ h2 {
   }
 
   .pagination button,
-  .app-nav button {
+  .app-nav button,
+  .button {
     width: 100%;
   }
 
@@ -356,6 +464,7 @@ h2 {
   .issue-table td {
     display: grid;
     grid-template-columns: minmax(92px, 36%) 1fr;
+    align-items: center;
     gap: 12px;
     padding: 12px 14px;
   }

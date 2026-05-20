@@ -1,8 +1,36 @@
 import { Link } from "react-router-dom";
-import type { Issue } from "../../types/issue";
+import {
+  IssuePriority,
+  IssueStatus,
+  type Issue,
+} from "../../types/issue";
 
 type Props = {
   issues: Issue[];
+};
+
+const priorityLabels: Record<IssuePriority, string> = {
+  [IssuePriority.LOW]: "Low",
+  [IssuePriority.MEDIUM]: "Medium",
+  [IssuePriority.HIGH]: "High",
+};
+
+const statusLabels: Record<IssueStatus, string> = {
+  [IssueStatus.OPEN]: "Open",
+  [IssueStatus.IN_PROGRESS]: "In Progress",
+  [IssueStatus.CLOSED]: "Closed",
+};
+
+const priorityClasses: Record<IssuePriority, string> = {
+  [IssuePriority.LOW]: "badge--low",
+  [IssuePriority.MEDIUM]: "badge--medium",
+  [IssuePriority.HIGH]: "badge--high",
+};
+
+const statusClasses: Record<IssueStatus, string> = {
+  [IssueStatus.OPEN]: "badge--open",
+  [IssueStatus.IN_PROGRESS]: "badge--in-progress",
+  [IssueStatus.CLOSED]: "badge--closed",
 };
 
 export const IssueTable = ({
@@ -44,11 +72,19 @@ export const IssueTable = ({
               </td>
 
               <td data-label="Priority">
-                {issue.priority}
+                <span
+                  className={`badge ${priorityClasses[issue.priority]}`}
+                >
+                  {priorityLabels[issue.priority]}
+                </span>
               </td>
 
               <td data-label="Status">
-                {issue.status}
+                <span
+                  className={`badge ${statusClasses[issue.status]}`}
+                >
+                  {statusLabels[issue.status]}
+                </span>
               </td>
 
               <td data-label="Assignee">
