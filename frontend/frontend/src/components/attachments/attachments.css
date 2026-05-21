@@ -1,0 +1,77 @@
+.attachment-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(220px, 260px));
+  justify-content: start;
+  gap: 16px;
+  margin-top: 18px;
+}
+
+.attachment-card {
+  display: grid;
+  grid-template-columns: 1fr auto;
+  gap: 10px 12px;
+  min-width: 0;
+  padding: 12px;
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  background: var(--surface);
+}
+
+.attachment-preview {
+  grid-column: 1 / -1;
+  display: block;
+  overflow: hidden;
+  border-radius: 6px;
+  background: var(--surface-muted);
+}
+
+.attachment-preview img {
+  display: block;
+  width: 100%;
+  aspect-ratio: 16 / 10;
+  object-fit: cover;
+  transition: transform 160ms ease;
+}
+
+.attachment-preview:hover img {
+  transform: scale(1.03);
+}
+
+.attachment-card p {
+  overflow-wrap: anywhere;
+}
+
+.attachment-name {
+  margin-bottom: 0;
+  color: var(--text);
+  font-size: 0.9rem;
+  font-weight: 700;
+}
+
+.attachment-file {
+  grid-column: 1 / -1;
+  display: grid;
+  place-items: center;
+  min-height: 150px;
+  margin-bottom: 0;
+  border: 1px dashed var(--border);
+  border-radius: 6px;
+  color: var(--text-muted);
+  background: var(--surface-muted);
+  font-weight: 700;
+}
+
+.attachment-remove-button {
+  align-self: center;
+  justify-self: end;
+}
+
+.file-upload {
+  display: grid;
+  gap: 8px;
+}
+
+.file-upload input {
+  width: 100%;
+  max-width: 420px;
+}

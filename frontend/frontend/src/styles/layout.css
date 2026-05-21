@@ -1,0 +1,130 @@
+.app-shell {
+  display: flex;
+  min-height: 100vh;
+  flex-direction: column;
+}
+
+.app-main {
+  flex: 1;
+}
+
+.app-nav {
+  position: sticky;
+  top: 0;
+  z-index: 10;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 24px;
+  padding: 14px 24px;
+  border-bottom: 1px solid rgba(15, 118, 110, 0.18);
+  background:
+    linear-gradient(135deg, rgba(15, 118, 110, 0.96), rgba(31, 41, 51, 0.98));
+  backdrop-filter: blur(12px);
+}
+
+.app-nav__brand {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  margin: 0;
+  color: #ffffff;
+  font-size: 1.08rem;
+  line-height: 1.2;
+  font-weight: 800;
+  flex-shrink: 0;
+  white-space: nowrap;
+}
+
+.app-nav__mark {
+  display: inline-grid;
+  width: 34px;
+  height: 34px;
+  place-items: center;
+  border: 1px solid rgba(255, 255, 255, 0.35);
+  border-radius: 8px;
+  color: #e6f4f1;
+  background: rgba(255, 255, 255, 0.12);
+  font-size: 0.82rem;
+  letter-spacing: 0.04em;
+}
+
+.app-nav__actions {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin-left: auto;
+  min-width: 0;
+}
+
+.app-nav__user {
+  color: #d9f0eb;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.app-nav button {
+  color: #0f3f3a;
+  background: #ffffff;
+}
+
+.app-nav button:hover:not(:disabled) {
+  color: #ffffff;
+  background: rgba(255, 255, 255, 0.18);
+  box-shadow: none;
+}
+
+.app-footer {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 14px;
+  min-height: 56px;
+  padding: 14px 20px;
+  border-top: 1px solid var(--border);
+  color: var(--text-muted);
+  background: #ffffff;
+  font-size: 0.86rem;
+  font-weight: 700;
+}
+
+.app-footer span:not(:last-child)::after {
+  content: "";
+  display: inline-block;
+  width: 4px;
+  height: 4px;
+  margin-left: 14px;
+  border-radius: 999px;
+  vertical-align: middle;
+  background: var(--border);
+}
+
+@media (max-width: 720px) {
+  .app-nav,
+  .app-nav__actions {
+    align-items: stretch;
+    flex-direction: column;
+  }
+
+  .app-nav {
+    gap: 12px;
+    padding: 14px 12px;
+  }
+
+  .app-nav__actions {
+    gap: 10px;
+  }
+
+  .app-nav__user {
+    white-space: normal;
+  }
+
+  .app-footer {
+    flex-wrap: wrap;
+  }
+
+  .app-nav button {
+    width: 100%;
+  }
+}

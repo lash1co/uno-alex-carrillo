@@ -1,0 +1,144 @@
+.container {
+  width: min(100% - 32px, var(--content-width));
+  margin: 0 auto;
+  padding: 28px 0 48px;
+}
+
+.page-card {
+  padding: clamp(18px, 3vw, 28px);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  background: var(--surface);
+  box-shadow: var(--shadow);
+}
+
+.page-header {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 16px;
+  margin-bottom: 22px;
+}
+
+.page-header h1 {
+  margin-bottom: 4px;
+}
+
+.page-subtitle {
+  margin-bottom: 0;
+  color: var(--text-muted);
+  font-size: 0.95rem;
+}
+
+.login-page {
+  display: grid;
+  min-height: 100vh;
+  place-items: start center;
+  padding: clamp(32px, 8vh, 72px) 16px;
+}
+
+.login-card {
+  width: min(100%, 480px);
+}
+
+.login-card .page-header {
+  margin-bottom: 24px;
+}
+
+.login-card .form--narrow {
+  max-width: none;
+}
+
+.section-header {
+  display: flex;
+  align-items: flex-end;
+  justify-content: space-between;
+  gap: 16px;
+  margin-bottom: 14px;
+}
+
+.section-header p {
+  margin-bottom: 0;
+  color: var(--text-muted);
+  font-size: 0.92rem;
+}
+
+.divider {
+  margin: 24px 0;
+  border: 0;
+  border-top: 1px solid var(--border);
+}
+
+.loading-state {
+  color: var(--text-muted);
+}
+
+.empty-state {
+  margin-top: 16px;
+  padding: 18px;
+  border: 1px dashed var(--border);
+  border-radius: var(--radius);
+  color: var(--text-muted);
+  background: var(--surface-muted);
+  text-align: left;
+}
+
+.modal-backdrop {
+  position: fixed;
+  inset: 0;
+  z-index: 30;
+  display: grid;
+  place-items: center;
+  padding: 20px;
+  background: rgba(15, 23, 42, 0.45);
+}
+
+.modal {
+  width: min(100%, 560px);
+  max-height: calc(100vh - 40px);
+  overflow: auto;
+  padding: 24px;
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  background: var(--surface);
+  box-shadow: 0 24px 70px rgba(15, 23, 42, 0.24);
+}
+
+.modal--compact {
+  width: min(100%, 460px);
+}
+
+.modal-header {
+  margin-bottom: 18px;
+}
+
+.modal-header h2 {
+  margin-bottom: 4px;
+}
+
+.modal-header p,
+.modal-copy {
+  margin-bottom: 0;
+  color: var(--text-muted);
+}
+
+.modal-copy {
+  margin-bottom: 20px;
+}
+
+@media (max-width: 720px) {
+  .container {
+    width: min(100% - 24px, var(--content-width));
+    padding-top: 24px;
+  }
+
+  .page-header,
+  .section-header {
+    align-items: stretch;
+    flex-direction: column;
+  }
+
+  .button {
+    width: 100%;
+  }
+}
